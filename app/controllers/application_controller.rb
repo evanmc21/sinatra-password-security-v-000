@@ -37,6 +37,7 @@ class ApplicationController < Sinatra::Base
 		if user && user.authenticate(params[:password])
 				session[:user_id] = user.id
 				redirect "/success"
+				#authenticate method takes a string as an argument. If the string matches up against the password digest, it will return the user object, otherwise it will return false. Therefore, we can check that we have a user AND that the user is authenticated.
     else
         redirect "/failure"
     end
